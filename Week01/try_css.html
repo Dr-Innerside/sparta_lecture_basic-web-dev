@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파르타코딩클럽 | 퀴즈 01</title>
+
+    <style>
+        .mytitle {
+            /* 글자 색 넣기 */
+            color: white;
+            /* mytitle로 지정된 div 가로, 세로 값 넣기 */
+            width: 300px;
+            height: 200px;
+            /* div에 이미지 씌우기 */
+            background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg');
+            /* 이미지를 가운데로 지정 */
+            background-position: center;
+            /* 이미지 크기 맞추기 */
+            background-size: cover;
+            
+            /* 바깥 둥글게 만들기 */
+            border-radius: 10px;
+            /* 글씨 가운데 정렬 */
+            text-align: center;
+            /* 안쪽 여백 설정 */
+            padding-top: 40px;
+        }
+    .wrap {
+        /* 전체 랩 속성 */
+        /* 바깥 여백 속성 */
+        /* margin 상, 우, 하, 좌 의 순서로 지정 */
+        /* 아래의 경우 위쪽 10px 여백과 나머지 자동 */
+        margin: 10px auto;
+        /* 가로 속성 지정 : mytitle 값과 맞추는 작업 */
+        width: 300px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="mytitle">                   <!--클래스 지정자 넣기-->
+            <h1>로그인 페이지</h1>
+            <h5>아이디, 비밀번호를 입력해주세요</h5>
+        </div>                                  <!--div로 묶기-->
+        <div>
+            <p>
+                ID: <input type="text" />
+            </p>
+            <p>
+                PW: <input type="password" />
+            </p>
+        </div>
+        <button>로그인하기</button>
+    </div>
+</body>
+
+</html>
