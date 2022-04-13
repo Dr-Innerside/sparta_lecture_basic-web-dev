@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+
+    <!-- 폰트넣기 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .wrap {
+            width: 800px;
+            margin: auto;
+        }
+        
+        .part_img {
+            width: 800px;
+            height: 500px;
+
+        }
+
+        .title, .order {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .btn-order {
+            width: 300px;
+        }
+
+        .btn-order {
+            display: block;
+            margin: 20px auto;
+        }
+
+    </style>
+
+    <script>
+        function order() {
+            alert('주문이 완료되었습니다!')
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div><img class="part_img" src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg?20201002142956&q=80&rw=750&rh=536"></div>
+        <div class="part_title">
+            <p><a class="title">상품제목 </a><a>가격: 50,000원/1판</a></p>
+            <p><a>일본 전통의 음식 모둠초밥을 간편하게 집에서 받아서 드셔보세요! 냠냠짭짭 쫩짜라좝짭</a></p>
+        </div>
+
+        <a class="order">주문하기</a>
+        <div class="part_order">
+            <!-- 성함 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <!-- 수량 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            <!-- 주소 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">주소</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <!-- 전화번호 -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">전화번호</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <button type="button" onclick="order()" class="btn btn-primary btn-order">주문하기</button>
+    </div>
+</body>
+
+</html>
