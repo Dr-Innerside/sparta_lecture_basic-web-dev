@@ -17,21 +17,27 @@ soup = BeautifulSoup(data.text, 'html.parser')
 # select를 이용해서, tr들을 불러오기
 songs = soup.select('#body-content > div.newest-list > div > table > tbody > tr')
 #body-content > div.newest-list > div > table > tbody > tr:nth-child(1)
+#body-content > div.newest-list > div > table > tbody > tr:nth-child(1) > td.info > a.title.ellipsis
+#body-content > div.newest-list > div > table > tbody > tr:nth-child(1) > td.number
+#body-content > div.newest-list > div > table > tbody > tr:nth-child(1) > td.info > a.artist.ellipsis
 
-# movies (tr들) 의 반복문을 돌리기
-for movie in movies:
-    # movie 안에 a 가 있으면,
-    a_tag = movie.select_one('td.title > div > a')
+# songs (tr들) 의 반복문을 돌리기
+for song in songs:
+    # songs 안에 a 가 있으면,
+    a_tag = song.select_one('td.info > a.title.ellipsis')
+    # print(a_tag.text.strip())
+
     if a_tag is not None:
-        rank = movie.select_one('td:nth-child(1) > img')['alt']  # img 태그의 alt 속성값을 가져오기
-        title = a_tag.text  # a 태그 사이의 텍스트를 가져오기
-        star = movie.select_one('td.point').text  # td 태그 사이의 텍스트를 가져오기
+        # rank = song.select_one('td.number').text.split(' ')[0].strip()       내 풀이
+        rank = song.select_one('td.number').text[0:2].strip()                     # 답안
+        title = a_tag.text.strip()  # 여백을 비운 텍스트만 가져오기
+        star = song.select_one('td.info > a.artist.ellipsis').text  # td 태그 사이의 텍스트를 가져오기
         print(rank, title, star)
 
-        doc = {
-            'rank': rank,
-            'title': title,
-            'star': star
-        }
-
-        db.movies.insert_one(doc)
+        # doc = {
+        #     'rank': rank,
+        #     'title': title,
+        #     'star': star
+        # }
+        #
+        # db.movies.insert_one(doc)
