@@ -34,9 +34,10 @@ def write_review():
 
 @app.route('/review', methods=['GET'])
 def read_reviews():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': '이 요청은 GET!'})
+    # 1. DB에서 리뷰 정보 모두 가져오기
+    reviews = list(db.bookreview.find({}, {'_id': False}))
+    # 2. 성공 여부 & 리뷰 목록 반환하기
+    return jsonify({'all_reviews': reviews})
 
 
 if __name__ == '__main__':
