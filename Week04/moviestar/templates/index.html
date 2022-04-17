@@ -37,7 +37,7 @@
             function showStar() {
                 $.ajax({
                     type: 'GET',
-                    url: '/api/list?sample_give=샘플데이터',
+                    url: '/api/list',
                     data: {},
                     success: function (response) {
                         alert(response['msg']);
