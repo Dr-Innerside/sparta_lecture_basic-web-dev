@@ -56,7 +56,7 @@ def list_get():
 
    all_list = list(db.list.find({},{'_id':False}))
 
-   return jsonify({'result': 'success','msg': '이 요청은 GET'})
+   return jsonify({'result': 'success','all_list': all_list})
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)

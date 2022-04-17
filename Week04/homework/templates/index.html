@@ -76,19 +76,39 @@
                 success: function (response) {
                     if (response["result"] == "success") {
                         alert(response["msg"]);
+                        window.location.reload()
                     }
                 }
             })
         }
 
         function get_list() {
+            $('.table>tbody').empty()
             $.ajax({
                 type: "GET",
                 url: "/list",
                 data: {},
                 success: function (response) {
                     if (response["result"] == "success") {
-                        alert(response["msg"]);
+                        // console.log(response['all_list'])
+                        result = response['all_list']
+                        for (i=0; i<result.length; i++){
+                            let name = result[i]['name']
+                            let count = result[i]['count']
+                            let address = result[i]['address']
+                            let number = result[i]['number']
+
+                            // console.log(name, count, address, number)
+
+                            let temp_html = `<tr>
+                                                <th scope="row">${name}</th>
+                                                <td>${count}</td>
+                                                <td>${address}</td>
+                                                <td>${number}</td>
+                                            </tr>`
+
+                            $('.table>tbody').append(temp_html)
+                        }
                     }
                 }
             })
