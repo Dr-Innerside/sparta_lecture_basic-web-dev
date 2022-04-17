@@ -26,8 +26,8 @@ def show_stars():
     #   응답 데이터
     #   정보 전체 리턴
     #   'all_moviestar': 올 무비스타
-    all_moviestar = list(db.mystar.find({},{'_id':False}))
-    print(all_moviestar)
+    all_moviestar = list(db.mystar.find({},{'_id':False}).sort('like',-1))
+    # print(all_moviestar)
     return jsonify({'msg': 'GET 연결!','all_moviestar':all_moviestar})
 
 # 좋아요 기능: 클라이언트에서 받은이름(name_give)으로 찾아 좋아요(like) 증
@@ -41,21 +41,29 @@ def like_star():
     #   응답 데이터
     #   msg : 좋아요!
     name_receive = request.form['name_give']
-    print(name_receive)
+    # print(name_receive)
     find_star = db.mystar.find_one({'name': name_receive})
     print(find_star)
     find_like = find_star['like']
     new_like = find_like + 1
     db.mystar.update_one({'name': name_receive}, {'$set': {'like': new_like}})
 
-    return jsonify({'msg': '좋아요!'})
+    return jsonify({'result': 'success','msg': '좋아요!'})
 
 # 삭제 기능: 클라이언트에서 받은이름(name_give)으로 찾아 영화인데이터 삭제
 @app.route('/api/delete', methods=['POST'])
 def delete_star():
-    sample_receive = request.form['sample_give']
-    print(sample_receive)
-    return jsonify({'msg': 'delete 연결되었습니다!'})
+    # API 설계
+    #   사용자 요청
+    #   사용자 이름 요청(name_give)
+    #   사용자 이름으로 데이터베이스 find_one
+    #   해당 데이터 삭제
+    #   응답 데이터
+    #   msg : 삭제 완료 되었습니다.
+    name_receive = request.form['name_give']
+    print(name_receive)
+    db.mystar.delete_one({'name': name_receive})
+    return jsonify({'result': 'success','msg': '삭제 완료 되었습니다.'})
 
 
 if __name__ == '__main__':
