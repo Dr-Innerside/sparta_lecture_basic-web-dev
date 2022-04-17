@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.idea/
+Week04/alonememo/.idea/
+Week04/bookreview/.idea/
+Week04/prac/.idea/
+Week04/moviestar/.idea/
+
