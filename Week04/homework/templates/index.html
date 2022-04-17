@@ -69,7 +69,7 @@
             let number = $('#order_number').val()
             $.ajax({
                 type: "POST",
-                url: "/memo",
+                url: "/list",
                 data: {name_give: name, count_give: count, address_give: address, number_give: number},
                 success: function (response) {
                     if (response["result"] == "success") {

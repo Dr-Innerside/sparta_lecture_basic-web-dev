@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
+from pymongo import MongoClient
+client = MongoClient('localhost',27017)
+db = client.preboot
+
 @app.route('/')
 def home():
    return render_template('index.html')
@@ -26,9 +30,18 @@ def list_post():
    count_receive = request.form['count_give']
    address_receive = request.form['address_give']
    number_receive = request.form['number_give']
+
    print(name_receive, count_receive, address_receive, number_receive)
 
-   return jsonify({'result':'success', 'msg': '이 요청은 POST!'})
+   doc = {
+      'name': name_receive,
+      'count': count_receive,
+      'address': address_receive,
+      'number': number_receive
+   }
+
+   db.list.insert_one(doc)
+   return jsonify({'result':'success', 'msg': '주문 목록에 추가되었습니다!'})
 
 # GET API
 @app.route('/list', methods=['GET'])
