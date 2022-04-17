@@ -91,11 +91,14 @@
             });
         }
 
+        name = $('#star-name').val().split(' ')[0]
+
         function likeStar(name) {
+
             $.ajax({
                 type: 'POST',
                 url: '/api/like',
-                data: {sample_give: '샘플데이터'},
+                data: {name_give: name},
                 success: function (response) {
                     alert(response['msg']);
                 }
@@ -141,7 +144,7 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <a href="#" target="_blank" class="star-name title is-4">김다미 (좋아요: 3)</a>
+                    <a href="#" id="star_name" target="_blank" class="star-name title is-4">김다미 (좋아요: 3)</a>
                     <p class="subtitle is-6">안녕, 나의 소울메이트(가제)</p>
                 </div>
             </div>
