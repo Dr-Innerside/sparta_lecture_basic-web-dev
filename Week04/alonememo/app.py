@@ -18,10 +18,11 @@ def home():
 
 
 @app.route('/memo', methods=['GET'])
-def listing():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': 'GET 연결되었습니다!'})
+def read_articles():
+    # 1. 모든 document 찾기 & _id 값은 출력에서 제외하기
+    articles = list(db.articles.find({},{'_id': False}))
+    # 2. articles라는 키 값으로 영화정보 내려주기
+    return jsonify({'all_articles': articles})
 
 
 ## API 역할을 하는 부분
