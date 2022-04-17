@@ -60,7 +60,9 @@
     </style>
 
     <script>
-
+        $(document).ready(function () {
+            get_list();
+        });
 
         function post_list() {
             let name = $('#order_name').val()
@@ -82,7 +84,7 @@
         function get_list() {
             $.ajax({
                 type: "GET",
-                url: "/memo",
+                url: "/list",
                 data: {},
                 success: function (response) {
                     if (response["result"] == "success") {
