@@ -46,9 +46,17 @@ def list_post():
 # GET API
 @app.route('/list', methods=['GET'])
 def list_get():
-   title_receive = request.args.get('title_give')
-   print(title_receive)
-   return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
+   # GET API 설계
+   #
+   #  사용자 요청
+   #  없음
+   #  응답 데이터
+   #  DB에 존재하는 정보(성함, 수량, 주소, 전화번호) 데이터를 뿌려줌
+   #  'all_list': 올 리스트
+
+   all_list = list(db.list.find({},{'_id':False}))
+
+   return jsonify({'msg': '이 요청은 GET'})
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)
