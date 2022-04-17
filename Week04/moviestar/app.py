@@ -39,10 +39,16 @@ def like_star():
     #   이름 요청(name_give)
     #   DB에서 해당 영화인 데이터를 찾아 좋아요 값 1증가
     #   응답 데이터
-    #   msg :
-    sample_receive = request.form['sample_give']
-    print(sample_receive)
-    return jsonify({'msg': 'like 연결되었습니다!'})
+    #   msg : 좋아요!
+    name_receive = request.form['name_give']
+    print(name_receive)
+    find_star = db.mystar.find_one({'name': name_receive})
+    print(find_star)
+    find_like = find_star['like']
+    new_like = find_like + 1
+    db.mystar.update_one({'name': name_receive}, {'$set': {'like': new_like}})
+
+    return jsonify({'msg': '좋아요!'})
 
 # 삭제 기능: 클라이언트에서 받은이름(name_give)으로 찾아 영화인데이터 삭제
 @app.route('/api/delete', methods=['POST'])
