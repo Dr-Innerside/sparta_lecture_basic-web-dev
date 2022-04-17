@@ -60,19 +60,17 @@
     </style>
 
     <script>
-        function order() {
-            alert('주문이 완료되었습니다!')
-        }
+
 
         function post_list() {
-            let name
-            let count
-            let address
-            let number
+            let name = $('#order_name').val()
+            let count = $('#order_count').val()
+            let address = $('#order_address').val()
+            let number = $('#order_number').val()
             $.ajax({
                 type: "POST",
                 url: "/memo",
-                data: {},
+                data: {name_give: name, count_give: count, address_give: address, number_give: number},
                 success: function (response) {
                     if (response["result"] == "success") {
                         alert(response["msg"]);
@@ -145,7 +143,7 @@
                    aria-describedby="basic-addon1">
         </div>
     </div>
-    <button type="button" onclick="order()" class="btn btn-primary btn-order">주문하기</button>
+    <button type="button" onclick="post_list()" class="btn btn-primary btn-order">주문하기</button>
 </div>
 <table class="table">
     <thead>
